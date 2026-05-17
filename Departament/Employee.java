@@ -62,21 +62,7 @@ public class Employee {
       department.addEmployee(this);
     }
   }
-
-  // FIXME: использование фигурных скобок для блока else
-  /*
-    public Employee(Employee copyEmployee){
-        if(copyEmployee != null){
-            this.setName(copyEmployee.getName());
-            this.setDepartment(copyEmployee.getRefDepartment());
-        } else {
-            this.setName(null);
-            this.setDepartment(null);
-        }
-    }
-  */
-
-  // FIXTO:
+  
   public Employee(Employee copyEmployee) {
     if (copyEmployee != null) {
       this.setName(copyEmployee.getName());
