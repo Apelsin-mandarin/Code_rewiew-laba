@@ -147,49 +147,95 @@ public class Department {
     return this.employees.contains(employee);
   }
 
-  // FIXME: Склеивание строк через '+=' в цикле неэффективно, отступы 2 пробела
+  // FIXME: отступы 2 пробела
   /*
     @Override
     public String toString() {
-        ...
+        String depName = "unknown";
+        if (name != null && !name.isEmpty()) {
+            depName = name;
+        }
         String result = "Отдел\n==" + depName + "==\n";
-        ...
+
+        if (boss != null) {
+            String bossName = "unknown";
+            if (boss.getName() != null && !boss.getName().isEmpty()) {
+                bossName = boss.getName();
+            }
+            result += "Начальник: " + bossName + "\n";
+        } else {
+            result += "Начальник пока не назначен\n";
+        }
+
         result += "Сотрудники:\n";
-        ...
+        if (employees.isEmpty()) {
+            result += "Сотрудников пока нет\n";
+        } else {
+            int number = 1;
+
+            for (Employee employee : employees) {
+                if (employee != this.boss) {
+                    String empName = "unknown";
+                    if (employee.getName() != null && !employee.getName().isEmpty()) {
+                        empName = employee.getName();
+                    }
+                    result += String.format("%d: %s\n", number, empName);
+                    number++;
+                }
+            }
+
+            if (employees.size() == 1 && this.boss != null) {
+                result += "Только начальник\n";
+            }
+        }
+
+        return result;
     }
+
   */
 
   // FIXTO:
   @Override
-  public String toString() {
-    String depName = (name != null && !name.isEmpty()) ? name : "unknown";
-    StringBuilder result = new StringBuilder("Отдел\n==");
-    result.append(depName).append("==\n");
-
-    if (boss != null) {
-      String bossName = (boss.getName() != null && !boss.getName().isEmpty()) 
-          ? boss.getName() : "unknown";
-      result.append("Начальник: ").append(bossName).append("\n");
-    } else {
-      result.append("Начальник пока не назначен\n");
-    }
-
-    result.append("Сотрудники:\n");
-    if (employees.isEmpty()) {
-      result.append("Сотрудников пока нет\n");
-    } else {
-      int number = 1;
-      for (Employee employee : employees) {
-        if (employee != this.boss) {
-          String empName = (employee.getName() != null && !employee.getName().isEmpty()) 
-              ? employee.getName() : "unknown";
-          result.append(String.format("%d: %s\n", number++, empName));
+    public String toString() {
+        String depName = "unknown";
+        if (name != null && !name.isEmpty()) {
+            depName = name;
         }
-      }
-      if (employees.size() == 1 && this.boss != null) {
-        result.append("Только начальник\n");
-      }
+        String result = "Отдел\n==" + depName + "==\n";
+
+        if (boss != null) {
+            String bossName = "unknown";
+            if (boss.getName() != null && !boss.getName().isEmpty()) {
+                bossName = boss.getName();
+            }
+            result += "Начальник: " + bossName + "\n";
+        } else {
+            result += "Начальник пока не назначен\n";
+        }
+
+        result += "Сотрудники:\n";
+        if (employees.isEmpty()) {
+            result += "Сотрудников пока нет\n";
+        } else {
+            int number = 1;
+
+            for (Employee employee : employees) {
+                if (employee != this.boss) {
+                    String empName = "unknown";
+                    if (employee.getName() != null && !employee.getName().isEmpty()) {
+                        empName = employee.getName();
+                    }
+                    result += String.format("%d: %s\n", number, empName);
+                    number++;
+                }
+            }
+
+            if (employees.size() == 1 && this.boss != null) {
+                result += "Только начальник\n";
+            }
+        }
+
+        return result;
     }
-    return result.toString();
-  }
+
 }
